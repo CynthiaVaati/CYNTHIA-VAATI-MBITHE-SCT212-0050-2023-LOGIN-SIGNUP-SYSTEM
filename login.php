@@ -1,0 +1,44 @@
+<?php
+include("connection.php");
+if(isset($_POST['submit'])){
+    $username=$_POST['user'];
+    $password=$_POST['pass'];
+    
+
+$sql="select* from users where user_name= '$username' and password='$password'";
+$result=mysqli_query($connection,$sql);
+$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+$count=mysqli_num_rows($result);
+if($count==1){
+    header("location:welcome.php");
+}
+else{
+    echo '<script>
+           window.location.href ="index.php";
+           alert("login failed.Invalid username or password!!!")
+           </script>' ;  
+}
+ 
+
+}
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+     <body>
+        
+
+    </form>
+    </div>
+
+        </div>
+     </body>
+</html>
+
+
+
+
